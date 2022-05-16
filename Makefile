@@ -1,4 +1,4 @@
-dev_token = "681aa829-d9f3-4ee5-b319-ab3d64ca07ca"
+dev_token = "4a65d329-52c9-4830-a156-217973fb72de"
 production_token = ${PRODUCTION_TOKEN}
 
 test:
@@ -12,7 +12,7 @@ test.flagone:
 	python3 -m pytest --cov=./ tests/test_number_two.py --cov-report=xml:flagone.coverage.xml
 
 dev.report:
-	./dev.sh -t ${dev_token} -u "https://qa.codecov.dev" -U "--insecure" -F flagtwo -f flagtwo.coverage.xml
+	./codecov -t ${dev_token} -F flagtwo -f flagtwo.coverage.xml
 
 dev.report.flagone:
 	./dev.sh -t ${dev_token} -F flagone -f flagone.coverage.xml
@@ -48,9 +48,9 @@ production.partial:
 	${MAKE} production.report
 
 dev.download:
-	curl -s http://localhost/bash > dev.sh
+	curl -s https://github.com/codecov/uploader/releases/download/v0.2.2/codecov-linux > dev.sh
 	chmod +x ./dev.sh
 
 production.download:
-	curl -s https://codecov.io/bash > production.sh
+	curl -s https://github.com/codecov/uploader/releases/download/v0.2.2/codecov-linux > production.sh
 	chmod +x ./production.sh
