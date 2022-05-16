@@ -8,5 +8,8 @@ def fib(n):
 def something():
     return True
 
+def times_2(x):
+    return x*2
+
 def untested_code(a):
     raise Exception()
