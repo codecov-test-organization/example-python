@@ -1,18 +1,18 @@
-dev_token = ${LOCAL_TOKEN}
+dev_token = "681aa829-d9f3-4ee5-b319-ab3d64ca07ca"
 production_token = ${PRODUCTION_TOKEN}
 
 test:
 	rm coverage.xml || true
 	rm .coverage || true
-	python -m pytest --cov=./ tests/test_sample.py --cov-report=xml:flagtwo.coverage.xml
+	python3 -m pytest --cov=./ tests/test_sample.py --cov-report=xml:flagtwo.coverage.xml
 
 test.flagone:
 	rm coverage.xml || true
 	rm .coverage || true
-	python -m pytest --cov=./ tests/test_number_two.py --cov-report=xml:flagone.coverage.xml
+	python3 -m pytest --cov=./ tests/test_number_two.py --cov-report=xml:flagone.coverage.xml
 
 dev.report:
-	./dev.sh -t ${dev_token} -F flagtwo -f flagtwo.coverage.xml
+	./dev.sh -t ${dev_token} -u "https://qa.codecov.dev" -U "--insecure" -F flagtwo -f flagtwo.coverage.xml
 
 dev.report.flagone:
 	./dev.sh -t ${dev_token} -F flagone -f flagone.coverage.xml
