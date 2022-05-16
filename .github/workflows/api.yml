@@ -2,9 +2,6 @@ name: API workflow
 
 on: [push, pull_request]
 
-env:
-  CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,3 +20,7 @@ jobs:
       run: python -m pytest --cov=./ tests/test_sample.py --cov-report=xml:flagtwo.coverage.xml
     - name: Upload coverage reports to Codecov with GitHub Action
       uses: codecov/codecov-action@v3
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        fail_ci_if_error: true # optional (default = false)
+        verbose: true # optional (default = false)
