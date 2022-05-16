@@ -5,6 +5,8 @@ def fib(n):
         return 1
     return fib(n - 1) + fib(n - 2)
 
+def something():
+    return True
 
 def untested_code(a):
     raise Exception()
